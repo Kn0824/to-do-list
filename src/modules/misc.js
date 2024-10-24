@@ -1,31 +1,27 @@
-export default class UI {
-    clearPage() {
-        const listContainer = document.querySelector('.listContainer');
-        const list = listContainer.querySelectorAll('.pageHolder');
-        list.forEach(item => {
-            item.style.display = "none";
+import Project from "./project";
+import Item from "./item.js";
+
+export default class Actions {
+    openForm() {
+        const form = document.getElementById("newList");
+        form.style.display = 'block';
+    }
+    switchForm() {
+        const forms = document.querySelectorAll("form");
+        forms.forEach(form => {
+            if(form.style.display == 'none') {
+                form.style.display = 'block';
+            }
+            else {
+                form.style.display = 'none';
+            }
         });
     }
-    
-    listForm() {
-        const listForm = document.querySelector(".formPopup");
-        listForm.style.display = "block";
-    
-        const newList = listForm.querySelector("#newList");
-        newList.style.display = "block";
-        const newProject = listForm.querySelector("#newProject");
-        
-        const switchList = listForm.querySelector(".switchList");
-        switchList.addEventListener('click', function() {
-            newList.style.display = "block";
-            newProject.style.display = "none";
-        });
-    
-        const switchProject = listForm.querySelector(".switchProject");
-        switchProject.addEventListener('click', function() {
-            newList.style.display = "none";
-            newProject.style.display = "block";
+    closeForm() {
+        const forms = document.querySelectorAll("form");
+        forms.forEach(form => {
+            form.style.display = 'none';
+            form.reset();
         });
     }
 }
-
